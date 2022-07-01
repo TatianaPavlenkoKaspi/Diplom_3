@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AccountPage extends pages.HeaderElements {
+public class AccountPage extends HeaderElements {
 
     // текст о возможности изменить данные
     @FindBy(how = How.XPATH, using = ".//p[text()='В этом разделе вы можете изменить свои персональные данные']")
