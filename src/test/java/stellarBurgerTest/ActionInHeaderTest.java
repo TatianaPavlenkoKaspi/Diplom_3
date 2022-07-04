@@ -2,10 +2,7 @@ package stellarBurgerTest;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import pages.AccountPage;
 import pages.MainPage;
 
@@ -14,21 +11,21 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class ActionInHeaderTest {
 
-    MainPage mainPage = open(MainPage.MAIN_PAGE_URL, MainPage.class);
+    static MainPage mainPage = open(MainPage.MAIN_PAGE_URL, MainPage.class);
     AccountPage accountPage = page(AccountPage.class);
-    String email = "kolbasa@yandex.ru";
-    String password = "87654321";
+    static String email = "kolbasa@yandex.ru";
+    static String password = "87654321";
 
 
     // авторизация перед каждым тестом
-    @Before
-    public void authorizationBeforeTest() {
+    @BeforeClass
+    public static void authorizationBeforeTest() {
         mainPage.clickAccountButtonInHeader()
                 .authorization(email, password);
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         Selenide.closeWebDriver();
     }
 

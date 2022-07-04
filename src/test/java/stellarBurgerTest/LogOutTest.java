@@ -1,9 +1,8 @@
 package stellarBurgerTest;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import pages.AccountPage;
 import pages.MainPage;
 
@@ -23,6 +22,10 @@ public class LogOutTest {
         mainPage.clickAccountButtonInHeader()
                 .authorization(email, password)
                 .clickAccountButtonInHeader();
+    }
+    @After
+    public void tearDown() {
+        Selenide.closeWebDriver();
     }
 
     @DisplayName("Проверка логаута")

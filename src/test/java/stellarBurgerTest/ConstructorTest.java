@@ -3,17 +3,25 @@ package stellarBurgerTest;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Configuration.browser;
 
 public class ConstructorTest {
 
     MainPage mainPage = open(MainPage.MAIN_PAGE_URL, MainPage.class);
 
-    @After
-    public void tearDown() {
+    @BeforeClass
+    public static void setUp() {
+        browser = "chrome";
+//        browser = "safari";
+    }
+    @AfterClass
+    public static void tearDown() {
         Selenide.closeWebDriver();
     }
 

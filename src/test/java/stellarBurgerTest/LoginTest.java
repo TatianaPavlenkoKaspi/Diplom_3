@@ -2,11 +2,10 @@ package stellarBurgerTest;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 import pages.MainPage;
 
+import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginTest {
@@ -15,7 +14,11 @@ public class LoginTest {
     String email = "kolbasa@yandex.ru";
     String password = "87654321";
 
-
+    @BeforeClass
+    public static void setUp() {
+        browser = "chrome";
+//        browser = "safari";
+    }
     @After
     public void tearDown() {
         Selenide.closeWebDriver();
